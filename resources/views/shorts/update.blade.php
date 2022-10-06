@@ -10,17 +10,16 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label class="form-label">Valstybiniai numeriai</label>
+                            <label class="form-label">shortcode</label>
                             <input class="form-control" type="text" name="shortcode" value="{{ $shortCode->shortcode }}">
                         </div>
                         <div  class="mb-3">
-                            <label class="form-label">Automobilio markė</label>
+                            <label class="form-label">replace</label>
                             <input class="form-control" type="text" name="replace" value="{{ $shortCode->replace }}">
                         </div>
 
-
                         <button class="btn btn-primary">Update</button>
-                        <a class="btn btn-success mx-3 float-end" href="{{ route('shorts.index') }}">Go Back</a>
+                        <a class="btn btn-success mx-3 float-end" href="{{ route('shorts.index') }}">Atgal</a>
                     </form>
                 </div>
             </div>

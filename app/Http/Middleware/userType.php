@@ -23,7 +23,6 @@ class userType
         if ($request->user()->type=='user'){
             return redirect('/cars');
         }
-
         return $next($request);
     }
 }

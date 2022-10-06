@@ -37,15 +37,6 @@ class ShortCodeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'shortcode' => 'required|unique:short_codes',
-            'replace' => 'required|unique:short_codes',
-        ],
-            [
-                'shortcode.required' => 'Valstybinis numeris privalomas',
-                'replace.required' => 'Valstybinis numeris negali būti trumpesnis, nei 2 simboliai',
-
-            ]);
         $shorts = new ShortCode();
         $shorts->shortcode=$request->shortcode;
         $shorts->replace=$request->replace;

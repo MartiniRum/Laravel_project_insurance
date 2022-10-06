@@ -5,34 +5,35 @@
             <div class="card bg-warning bg-opacity-10">
                 <div class="card-header bg-danger bg-opacity-90 m-3 rounded text-center fs-3">Visi automobiliai</div>
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>Markė</th>
                             <th>Modelis</th>
                             <th>Valstybiniai numeriai</th>
                             <th>Savininkas</th>
-                            <th><a class="btn btn-warning opacity-75 me-3 w-50 float-end "
+                            <th colspan="2" ><a class="btn btn-warning opacity-75 me-3 ps-4 pe-4 float-end "
                                    href="{{ route('cars.create') }}">Pridėti automobilį</a></th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($cars as $car)
                             <tr>
-                                <td>{{ $car->brand }}</td>
-                                <td>{{ $car->model }}</td>
-                                <td>{{ $car->reg_number }}</td>
-                                <td>
+                                <td class="pe-5">{{ $car->brand }}</td>
+                                <td class="pe-5">{{ $car->model }}</td>
+                                <td class="w-25">{{ $car->reg_number }}</td>
+                                <td class="w-25">
                                     {{ $car->owner->name }}
                                     {{ $car->owner->surname }}
                                 </td>
-                                <td class="d-flex float-end"><a class="btn btn-success me-3"
-                                                                href="{{ route('cars.edit', $car->id) }}">Update</a>
-
-                                    <form class="me-3" action="{{ route('cars.destroy', $car->id) }}" method="post">
+                                <td class="w-50"><a class="btn btn-success d-flex m-0 float-end"
+                                                    href="{{ route('cars.edit', $car->id) }}">Redaguoti</a>
+                                </td>
+                                <td class="d-inline-flex justify-content-end">
+                                    <form class="float-end m-0" action="{{ route('cars.destroy', $car->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger d-flex float-end m-0 me-3">Ištrinti</button>
                                     </form>
                                 </td>
                             </tr>

@@ -29,4 +29,5 @@ class ShortCodeM
         $response->setContent($html);
         return $response;
     }
+
 }

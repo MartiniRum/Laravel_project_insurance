@@ -10,29 +10,53 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Valstybiniai numeriai</label>
-                            <input class="form-control" type="text" name="reg_number">
+                            <input class="form-control @error('reg_number') is-invalid @enderror" type="text"
+                                   name="reg_number" value="{{old('reg_number')}}">
+                            @error('reg_number')
+                            @foreach( $errors->get('reg_number') as $error)
+                                <div class="alert alert-danger"> {{ $error }} </div>
+                            @endforeach
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Markė</label>
-                            <input class="form-control" type="text" name="brand">
+                            <label class="form-label">Automobilio markė</label>
+                            <input class="form-control @error('brand') is-invalid @enderror" type="text" name="brand"
+                                   value="{{old('brand')}}">
+                            @error('brand')
+                            @foreach( $errors->get('brand') as $error)
+                                <div class="alert alert-danger"> {{ $error }} </div>
+                            @endforeach
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Modelis</label>
-                            <input class="form-control" type="text" name="model">
+                            <label class="form-label">Automobilio modelis</label>
+                            <input class="form-control @error('model') is-invalid @enderror" type="text" name="model"
+                                   value="{{old('model')}}">
+                            @error('model')
+                            @foreach( $errors->get('model') as $error)
+                                <div class="alert alert-danger"> {{ $error }} </div>
+                            @endforeach
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Savininkas</label>
-                            <select class="form-control" name="owner_id">
-                                <option selected>Pasrinkti</option>
+                            <select class="form-control @error('owner_id') is-invalid @enderror" name="owner_id">
+                                <option selected>Pasirinkti</option>
                                 @foreach($owners as $owner)
-                                    <option value="{{$owner->id}}">{{$owner->name}} {{$owner->surname}}</option>
+                                    <option value="{{$owner->id}}"
+                                            @selected(old('owner_id')==$owner->id) )> {{$owner->name}} {{$owner->surname}}</option>
                                 @endforeach
                             </select>
+                            @error('owner_id')
+                            @foreach( $errors->get('owner_id') as $error)
+                                <div class="alert alert-danger"> {{ $error }} </div>
+                            @endforeach
+                            @enderror
                         </div>
 
 
-                        <button class="btn btn-danger ps-3 pe-3">Pridėti</button>
-                        <a class="btn btn-warning ps-4 pe-4 float-end" href="{{ route('cars.index') }}">Atgal</a>
+                        <button class="btn btn-danger">Pridėti</button>
+                        <a class="btn btn-warning mx-3 float-end" href="{{ route('cars.index') }}">Atgal</a>
                     </form>
                 </div>
             </div>

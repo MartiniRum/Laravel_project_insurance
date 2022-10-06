@@ -14,12 +14,13 @@ Route::get('cars', [CarController::class, 'index'])->name('cars.index');
 
 Route::middleware(['auth','ShortCodeM','userType'])->group(function () {
     Route::resource('cars', CarController::class)->except(['index']);
+//    Route::resource('owners', OwnerController::class);
 
 });
 
-Route::middleware( 'ShortCodeM')->group(function () {
+Route::middleware( ['ShortCodeM', 'userType'])->group(function () {
     Route::resource('owners', OwnerController::class);
-
+    Route::resource('shorts', ShortCodeController::class);
 });
 
 Route::get('/login',[\App\Http\Controllers\Auth\LoginController::class]);
@@ -37,6 +38,6 @@ Route::get('/login',[\App\Http\Controllers\Auth\LoginController::class]);
 ////    Route::post('/owners.{id).edit',[CarController::class]);
 //});
 
-Route::resource('shorts', ShortCodeController::class);
+//Route::resource('shorts', ShortCodeController::class);
 
 Auth::routes();
