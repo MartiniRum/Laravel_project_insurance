@@ -31,13 +31,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="btn mx-3" href="{{ route('cars.index') }}">Automobiliai</a>
+                            <a class="btn ms-5" href="{{ route('cars.index') }}">Automobiliai</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn" href="{{ route('owners.index') }}">Savininkai</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn" href="{{ route('shorts.index') }}">shorts</a>
+                            <a class="btn opacity-50 fw-bold" href="{{ route('shorts.index') }}">Trumpiniai</a>
                         </li>
                     </ul>
 

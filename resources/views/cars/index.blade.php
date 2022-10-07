@@ -12,7 +12,7 @@
                             <th>Modelis</th>
                             <th>Valstybiniai numeriai</th>
                             <th>Savininkas</th>
-                            <th colspan="2" ><a class="btn btn-warning opacity-75 me-3 ps-4 pe-4 float-end "
+                            <th colspan="2" ><a class="btn btn-warning opacity-75 me-3 ps-3 pe-3 float-end "
                                    href="{{ route('cars.create') }}">Pridėti automobilį</a></th>
                         </tr>
                         </thead>
@@ -33,7 +33,7 @@
                                     <form class="float-end m-0" action="{{ route('cars.destroy', $car->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger d-flex float-end m-0 me-3">Ištrinti</button>
+                                        <button class="btn btn-danger text-dark fw-bold d-flex float-end m-0 me-3">X</button>
                                     </form>
                                 </td>
                             </tr>

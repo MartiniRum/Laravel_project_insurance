@@ -17,7 +17,7 @@ class userType
     public function handle(Request $request, Closure $next)
     {
         if ($request->user()==null){
-            return redirect('/cars');
+            return redirect('/login');
         }
 
         if ($request->user()->type=='user'){

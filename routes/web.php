@@ -13,31 +13,16 @@ use Illuminate\Support\Facades\Auth;
 Route::get('cars', [CarController::class, 'index'])->name('cars.index');
 
 Route::middleware(['auth','ShortCodeM','userType'])->group(function () {
-    Route::resource('cars', CarController::class)->except(['index']);
-//    Route::resource('owners', OwnerController::class);
+    Route::resource('cars', CarController::class);
 
 });
 
 Route::middleware( ['ShortCodeM', 'userType'])->group(function () {
     Route::resource('owners', OwnerController::class);
+});
+Route::middleware( ['userType'])->group(function () {
     Route::resource('shorts', ShortCodeController::class);
 });
-
 Route::get('/login',[\App\Http\Controllers\Auth\LoginController::class]);
-
-////Route::middleware( 'userType')->group(function () {
-//
-//
-//
-////    Route::get('/cars.create', function () {
-////        return view('cars.index');
-////    });
-//
-//    Route::get('/cars.{id).edit',[CarController::class]);
-////    Route::post('/owners.create',[CarController::class]);
-////    Route::post('/owners.{id).edit',[CarController::class]);
-//});
-
-//Route::resource('shorts', ShortCodeController::class);
 
 Auth::routes();
