@@ -11,7 +11,7 @@
                         <div class="mb-3">
                             <label class="form-label">Valstybiniai numeriai</label>
                             <input class="form-control @error('reg_number') is-invalid @enderror" type="text"
-                                   name="reg_number" value="{{old('reg_number')}}">
+                                   name="reg_number">
                             @error('reg_number')
                             @foreach( $errors->get('reg_number') as $error)
                                 <div class="alert alert-danger"> {{ $error }} </div>
@@ -54,6 +54,10 @@
                             @enderror
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Automobilio nuotrauka:</label>
+                            <input type="file" class="form-control" name="image">
+                        </div>
 
                         <button class="btn btn-danger">Pridėti</button>
                         <a class="btn btn-warning mx-3 float-end" href="{{ route('cars.index') }}">Atgal</a>

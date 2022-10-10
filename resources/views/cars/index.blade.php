@@ -8,17 +8,27 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th>Nuotrauka</th>
                             <th>Markė</th>
                             <th>Modelis</th>
                             <th>Valstybiniai numeriai</th>
                             <th>Savininkas</th>
-                            <th colspan="2" ><a class="btn btn-warning opacity-75 me-3 ps-3 pe-3 float-end "
-                                   href="{{ route('cars.create') }}">Pridėti automobilį</a></th>
+                            <th colspan="2"><a class="btn btn-warning opacity-75 me-3 ps-3 pe-3 float-end "
+                                               href="{{ route('cars.create') }}">Pridėti automobilį</a></th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($cars as $car)
                             <tr>
+                                <td>
+                                    @foreach($images as $image)
+                                        @if ($image->car_id == $car->id)
+                                            <a href="{{ route('images.index', 'car_id='.$car->id) }}"><img
+                                                    src="{{ route('image.cars',$image->img) }}" style=" width: 150px;"></a>
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </td>
                                 <td class="pe-5">{{ $car->brand }}</td>
                                 <td class="pe-5">{{ $car->model }}</td>
                                 <td class="w-25">{{ $car->reg_number }}</td>
@@ -26,14 +36,16 @@
                                     {{ $car->owner->name }}
                                     {{ $car->owner->surname }}
                                 </td>
-                                <td class="w-50"><a class="btn btn-success d-flex m-0 float-end"
+                                <td class=" w-50"><a class="btn btn-success d-flex m-0 float-end"
                                                     href="{{ route('cars.edit', $car->id) }}">Redaguoti</a>
                                 </td>
-                                <td class="d-inline-flex justify-content-end">
-                                    <form class="float-end m-0" action="{{ route('cars.destroy', $car->id) }}" method="post">
+                                <td>
+                                    <form class="" action="{{ route('cars.destroy', $car->id) }}"
+                                          method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger text-dark fw-bold d-flex float-end m-0 me-3">X</button>
+                                        <button class="btn btn-danger text-dark fw-bold">X
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
